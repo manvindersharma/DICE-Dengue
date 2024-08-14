@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Diagnosis Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff0000;
+            font-weight: bold;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #66afe9;
+            outline: none;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .results div {
+            margin-bottom: 10px;
+        }
+        .results img {
+            max-width: 100px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .form-container {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .heading-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .remedy-section {
+            margin-top: 20px;
+        }
+        .remedy-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .remedy-section li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading-image">
+            <h1>Dengue/Malaria/Common Fever Detection by Department of Interdisciplinary Courses in Engineering</h1>
+            <img src="https://example.com/mosquito-image.png" alt="Mosquito" />
+        </div>
+        <div class="form-container">
+            <form id="healthForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="fever">Fever (in Fahrenheit):</label>
+                    <input type="number" id="fever" name="fever" required>
+                </div>
+                <div class="form-group">
+                    <label for="tlc">TLC (Total Leukocyte Count):</label>
+                    <input type="number" id="tlc" name="tlc" required>
+                </div>
+                <div class="form-group">
+                    <label for="platelet">Platelet Count:</label>
+                    <input type="number" id="platelet" name="platelet" required>
+                </div>
+                <div class="form-group">
+                    <label for="jointPain">Joint Pain:</label>
+                    <select id="jointPain" name="jointPain" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="headache">Headache:</label>
+                    <select id="headache" name="headache" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rash">Rash:</label>
+                    <select id="rash" name="rash" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nausea">Nausea/Vomiting:</label>
+                    <select id="nausea" name="nausea" required>
+                        <option value="">Select</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="conditions">Pre-existing Conditions:</label>
+                    <select id="conditions" name="conditions" required>
+                        <option value="">Select</option>
+                        <option value="none">None</option>
+                        <option value="highbp">High Blood Pressure</option>
+                        <option value="asthma">Asthma</option>
+                        <option value="diabetes">Diabetes</option>
+                    </select>
+                </div>
+                <button type="button" onclick="diagnose()">Submit</button>
+            </form>
+        </div>
+        <div class="results" id="results"></div>
+        <button type="button" onclick="exportToExcel()">Export to Excel</button>
+    </div>
+
+    <script>
+        function diagnose() {
+            const name = document.getElementById('name').value;
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const fever = parseFloat(document.getElementById('fever').value);
+            const tlc = parseInt(document.getElementById('tlc').value);
+            const platelet = parseInt(document.getElementById('platelet').value);
+            const jointPain = document.getElementById('jointPain').value === "yes";
+            const headache = document.getElementById('headache').value === "yes";
+            const rash = document.getElementById('rash').value === "yes";
+            const nausea = document.getElementById('nausea').value === "yes";
+            const conditions = document.getElementById('conditions').value;
+
+            let diagnosis = "";
+            let medicines = "";
+            let homeRemedies = "";
+            let indianHomeRemedies = "";
+
+            if (fever > 100.4 && tlc < 4000 && platelet < 150000 && jointPain && rash) {
+                diagnosis = "Possible Dengue";
+                medicines = age < 12 ? "Consult a pediatrician" : "Acetaminophen (Tylenol), Hydration salts";
+                homeRemedies = `
+                    <strong>Rest</strong>, drink plenty of fluids, avoid NSAIDs.
+                    <br>Recipe: Mix 1 cup of papaya leaf juice with a pinch of salt, drink twice daily.
+                `;
+                indianHomeRemedies = `
+                    <ul>
+                        <li><strong>Papaya leaf juice</strong>: 2 tablespoons, twice daily.</li>
+                        <li><strong>Giloy juice</strong>: Mix 2 tablespoons with warm water, once daily.</li>
+                        <li><strong>Turmeric milk</strong>: 1 teaspoon turmeric in warm milk, once daily.</li>
+                    </ul>
+                `;
+            } else if (fever > 100.4 && tlc < 4000 && platelet < 150000 && headache && nausea) {
+                diagnosis = "Possible Malaria";
+                medicines = "Consult a doctor for antimalarial treatment";
+                homeRemedies = `
+                    <strong>Ginger tea</strong>, consume herbal infusions, adequate rest.
+                    <br>Recipe: Boil 1 inch of ginger in 2 cups of water, add lemon, drink twice daily.
+                `;
+                indianHomeRemedies = `
+                    <ul>
+                        <li><strong>Karanja leaves</strong>: Chew 3-4 leaves on an empty stomach.</li>
+                        <li><strong>Cinnamon tea</strong>: Boil 2 sticks in water, add honey, drink twice daily.</li>
+                    </ul>
+                `;
+            } else if (fever > 100.4) {
+                diagnosis = "Common Fever";
+                medicines = age < 12 ? "Children's Acetaminophen" : "Acetaminophen or Ibuprofen";
+                homeRemedies = `
+                    <strong>Stay hydrated</strong>, use cool compresses, rest.
+                    <br>Recipe: Mix 1 teaspoon of honey in warm lemon water, drink thrice daily.
+                `;
+                indianHomeRemedies = `
+                    <ul>
+                        <li><strong>Tulsi leaves</strong>: Chew 3-4 leaves daily.</li>
+                        <li><strong>Ginger tea</strong>: 1 inch ginger in hot water, sip thrice daily.</li>
+                    </ul>
+                `;
+            } else {
+                diagnosis = "No significant illness detected.";
+                medicines = "Maintain a balanced diet and stay hydrated.";
+                homeRemedies = `
+                    <strong>Regular exercise</strong>, healthy diet, adequate sleep.
+                    <br>Recipe: Boil basil leaves in water, add honey, drink once daily.
+                `;
+                indianHomeRemedies = `
+                    <ul>
+                        <li><strong>Amla juice</strong>: 2 tablespoons, empty stomach.</li>
+                        <li><strong>Mint tea</strong>: Handful of mint leaves in hot water, sip daily.</li>
+                    </ul>
+                `;
+            }
+
+            // Adjust suggestions based on conditions
+            if (conditions === "highbp") {
+                medicines += "<br>Note: Avoid high-sodium medications.";
+                homeRemedies += "<br>Note: Limit salt intake.";
+            } else if (conditions === "asthma") {
+                medicines += "<br>Note: Avoid aspirin, consult your doctor.";
+                homeRemedies += "<br>Note: Practice deep-breathing exercises.";
+            } else if (conditions === "diabetes") {
+                medicines += "<br>Note: Monitor blood sugar levels.";
+                homeRemedies += "<br>Note: Use stevia instead of sugar in recipes.";
+            }
+
+            document.getElementById('results').innerHTML = `
+                <div><strong>Diagnosis:</strong> ${diagnosis}</div>
+                <div><strong>Medicines:</strong> ${medicines}</div>
+                <div><strong>Home Remedies:</strong> ${homeRemedies}</div>
+                <div><strong>Indian Home Remedies:</strong> ${indianHomeRemedies}</div>
+            `;
+        }
+
+        function exportToExcel() {
+            const wb = XLSX.utils.book_new();
+            const ws_data = [
+                ["Name", "Gender", "Age", "Address", "City", "State", "Fever", "TLC", "Platelet", "Joint Pain", "Headache", "Rash", "Nausea", "Pre-existing Conditions"],
+                [
+                    document.getElementById('name').value,
+                    document.getElementById('gender').value,
+                    document.getElementById('age').value,
+                    document.getElementById('address').value,
+                    document.getElementById('city').value,
+                    document.getElementById('state').value,
+                    document.getElementById('fever').value,
+                    document.getElementById('tlc').value,
+                    document.getElementById('platelet').value,
+                    document.getElementById('jointPain').value,
+                    document.getElementById('headache').value,
+                    document.getElementById('rash').value,
+                    document.getElementById('nausea').value,
+                    document.getElementById('conditions').value
+                ]
+            ];
+            const ws = XLSX.utils.aoa_to_sheet(ws_data);
+            XLSX.utils.book_append_sheet(wb, ws, "Health Data");
+            XLSX.writeFile(wb, "health_data.xlsx");
+        }
+    </script>
+
+    <!-- Include the SheetJS library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</body>
+</html>
